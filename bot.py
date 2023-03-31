@@ -1,26 +1,33 @@
+from functools import partial
+
 from environs import Env
-from telegram import ForceReply, Update
+from telegram import Update
 from telegram.ext import (CallbackContext, CommandHandler, Filters,
                           MessageHandler, Updater)
 
+from detect_intent import detect_intent_texts
+
+language_code = 'ru-RU'
+
 
 def start(update: Update, context: CallbackContext):
-    user = update.effective_user
     update.message.reply_text("Здравствуйте!")
 
 
-def echo(update, context):
-    update.message.reply_text(update.message.text)
-
+def reply(update: Update, context: CallbackContext, project_id):
+    session_id = update.effective_user.id
+    answer = detect_intent_texts(project_id, session_id, update.message.text, language_code)
+    update.message.reply_text(answer.fulfillment_text)
 
 def main():
     env = Env()
     env.read_env()
     tg_token = env.str("TG_BOT_TOKEN")
+    project_id = env.str("PROJECT_ID")
     updater = Updater(tg_token)
     dispatcher = updater.dispatcher
     dispatcher.add_handler(CommandHandler("start", start))
-    dispatcher.add_handler(MessageHandler(Filters.text, echo))
+    dispatcher.add_handler(MessageHandler(Filters.text, partial(reply, project_id=project_id)))
     updater.start_polling()
     updater.idle()
 
