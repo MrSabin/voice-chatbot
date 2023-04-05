@@ -7,7 +7,7 @@ from telegram.ext import (CallbackContext, CommandHandler, Filters,
 
 from detect_intent import detect_intent_texts
 
-language_code = 'ru-RU'
+LANGUAGE_CODE = 'ru-RU'
 
 
 def start(update: Update, context: CallbackContext):
@@ -16,7 +16,7 @@ def start(update: Update, context: CallbackContext):
 
 def reply(update: Update, context: CallbackContext, project_id):
     session_id = update.effective_user.id
-    answer = detect_intent_texts(project_id, session_id, update.message.text, language_code)
+    answer = detect_intent_texts(project_id, session_id, update.message.text, LANGUAGE_CODE)
     update.message.reply_text(answer.fulfillment_text)
 
 def main():
