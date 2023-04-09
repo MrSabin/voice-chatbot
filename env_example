@@ -1,0 +1,4 @@
+TG_BOT_TOKEN=your_telegram_bot_token
+PROJECT_ID=your_dialogflow_project_id
+VK_TOKEN=your_vk_group_api_token
+TG_CHAT_ID=your_telegram_chat_id
