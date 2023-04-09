@@ -1,5 +1,7 @@
 # Bots for VK and Telegram with DialogFlow
 
+You can see how the bots is working by visiting [@dvmn-test](http://t.me/dvmn_misc_bot) for telegram and [DVMN-bot](https://vk.com/club219791098) for VK.
+
 ## How to install:
 1. Python 3 should be already installed
 2. Download repository 
