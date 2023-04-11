@@ -34,13 +34,13 @@ gcloud auth application-default login
 
 ## Batch create DialogFlow intents (teach the bot):
 
-To create multiple bot intents at once, create file `questions.json` with questions and answers needed by you, and run the script by command
+To create multiple bot intents at once, create JSON file with questions and answers needed by you using `questions.json` as example, and run the script by command
 
 ```bash
-python3 training.py
+python3 training.py --json_path "path_to_json_file"
 ```
 
-New intents will be added in your DialogFlow project.
+New intents will be added in your DialogFlow project. If no JSON file is specified, script will use included `questions.json`.
 
 ## Running scripts:
 

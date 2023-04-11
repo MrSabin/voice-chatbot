@@ -1,3 +1,4 @@
+import argparse
 import json
 
 from environs import Env
@@ -34,7 +35,15 @@ def main():
     env = Env()
     env.read_env()
     project_id = env.str("PROJECT_ID")
-    with open("questions.json", "r") as questions:
+
+    parser = argparse.ArgumentParser(description="Script for batch create DialogFlow intents")
+    parser.add_argument(
+        "--json_path",
+        help="Folder with JSON file",
+        default="questions.json",
+    )
+    args = parser.parse_args()
+    with open(args.json_path, "r") as questions:
         dump = json.load(questions)
     for group_name, phrases in dump.items():
         questions = phrases["questions"]
