@@ -10,8 +10,7 @@ from telegram.ext import (CallbackContext, CommandHandler, Filters,
                           MessageHandler, Updater)
 
 from detect_intent import detect_intent_texts
-
-from .logs_handler import BotLogsHandler
+from logs_handler import BotLogsHandler
 
 LANGUAGE_CODE = 'ru-RU'
 logger = logging.getLogger(__name__)

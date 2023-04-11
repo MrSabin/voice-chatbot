@@ -9,8 +9,7 @@ from requests.exceptions import ConnectionError
 from vk_api.longpoll import VkEventType, VkLongPoll
 
 from detect_intent import detect_intent_texts
-
-from .logs_handler import BotLogsHandler
+from logs_handler import BotLogsHandler
 
 LANGUAGE_CODE = 'ru-RU'
 logger = logging.getLogger(__name__)
